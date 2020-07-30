@@ -1,0 +1,11 @@
+.owner-signup-container{
+    height: 90vh;
+    width: 90vw;
+    background-color: rgb(247, 248, 192);
+    box-sizing: border-box;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+.get-location{
+    display: block;
+}
