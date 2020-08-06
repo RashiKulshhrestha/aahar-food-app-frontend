@@ -1,11 +1,11 @@
 import React from 'react';
 import HomePage from '../auth/Home'
 import { Switch } from 'react-router-dom';
-import PublicRoute from '../src/components/layout/route/PublicRoute';
+import PublicRoute from '../utils/PublicRoute';
 import Login from '../auth/Login';
 import Signup from '../auth/Signup';
 import OwnerSignup from '../auth/OwnerSignup';
-import Userlogin from '../layout/Users/User-login';
+import Userlogin from '../user/User-login';
 
 function App() {
   return (
