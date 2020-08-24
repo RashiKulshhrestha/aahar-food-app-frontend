@@ -15,7 +15,7 @@ class HomePage extends Component{
                     </div>
                </div>
                 <div className="auth">
-                    <Link to = "/signup" className="auth-btn">Signup</Link>
+                    <Link to = "/user-register" className="auth-btn">Signup</Link>
                     <Link to = "/login" className="auth-btn">Login</Link>
                 </div>
             </div>
