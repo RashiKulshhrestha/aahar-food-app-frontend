@@ -1,12 +1,9 @@
 import React, { useState } from 'react';
-import { Link,Redirect } from 'react-router-dom';
-import { connect } from "react-redux";
-import { setAlert } from "../../actions/alert";
-import PropTypes from "prop-types";
-import { register } from "../../actions/auth";
+import { Link } from 'react-router-dom';
+import axios from 'axios';
 import './UserRegister.css';
 
-const UserRegister = ({ setAlert, register, isAuthenticated }) =>  {
+const UserRegister = () =>  {
     const [formData, setFormdata] = useState({
         name: "",
         email:"",
@@ -20,18 +17,39 @@ const UserRegister = ({ setAlert, register, isAuthenticated }) =>  {
             [e.target.name]: e.target.value,
           });
     };
+    const { name, email, mobile, password, confPassword } = formData;
     const onSubmit = async (e) => {
         e.preventDefault();
         if (password !== confPassword) {
-          setAlert("Password do not match", "danger");
+          console.log("Password do not match", "danger");
         } else {
-          register({ name, email, mobile, password });
+          //register
+          try {
+            const user = {
+              name,
+              email,
+              mobile,
+              password,
+            };
+            const config = {
+              headers: {
+                "Content-Type": "application/json",
+              },
+            };
+      
+            const body = JSON.stringify(user);
+      
+            const res = await axios.post("/api/users", body, config);
+      
+            console.log(res.data);
+      
         }
+        catch (err) {
+            console.log(err.response.data);
+        }
+      
       };
-      const { name, email, mobile, password, confPassword } = formData;
-      if (isAuthenticated) {
-        return <Redirect to="/user" />;
-      }
+    }
     return(
         <div className= "signup-container">
             <header>
@@ -80,7 +98,9 @@ const UserRegister = ({ setAlert, register, isAuthenticated }) =>  {
                         placeholder="Confirm Password"
                         type="password"
                         name="confPassword"
-                        value={confPassword}></input>
+                        value={confPassword}
+                        onChange={(e) => onChange(e)}>
+                    </input>
                     <input
                         className="signup-btn"
                         type="submit"
@@ -95,12 +115,5 @@ const UserRegister = ({ setAlert, register, isAuthenticated }) =>  {
     )
     
 }
-UserRegister.propTypes = {
-    setAlert: PropTypes.func.isRequired,
-    register: PropTypes.func.isRequired,
-    isAuthenticated: PropTypes.bool,
-  };
-  const mapStateProps = (state) => ({
-    isAuthenticated: state.auth.isAuthenticated,
-  });
-  export default connect(mapStateProps, { setAlert, register })(UserRegister);
+
+export default UserRegister;
