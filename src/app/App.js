@@ -1,25 +1,31 @@
-import React, { Fragment } from "react";
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import React, { Fragment, useEffect } from "react";
+import { BrowserRouter, Route, Switch } from "react-router-dom";
+import "./App.css";
 import Home from "../components/auth/Home";
 
 import { Provider } from "react-redux";
 import store from "../store";
-
-
+import { loadUser } from "../actions/auth";
+import setAuthUserToken from "../util/setAuthUserToken";
 import { Routes } from "../components/routing/Routes";
 
+if (localStorage.token) {
+  setAuthUserToken(localStorage.token);
+}
 const App = () => {
-  
+  useEffect(() => {
+    store.dispatch(loadUser());
+  }, []);
   return (
     <Provider store={store}>
-      <Router>
+      <BrowserRouter>
         <Fragment>
           <Switch>
             <Route exact path="/" component={Home} />
             <Route component={Routes} />
           </Switch>
         </Fragment>
-      </Router>
+      </BrowserRouter>
     </Provider>
   );
 };
