@@ -6,7 +6,7 @@ import PropTypes from "prop-types";
 import { register } from "../../actions/authOwner";
 import "./ownerRegister.css";
 
-const OwnerRegister = ({ setAlert,register, isAuthenticated }) =>  {
+const OwnerRegister = ({ setAlert,register, isAuthenticatedOwner }) =>  {
     const [formData, setFormdata] = useState({
         service_name: "",
         owner_name: "",
@@ -52,7 +52,7 @@ const OwnerRegister = ({ setAlert,register, isAuthenticated }) =>  {
         city,
         postal_code
     } = formData;
-    if (isAuthenticated) {
+    if (isAuthenticatedOwner) {
         return <Redirect to="/owner" />;
     }
     return(
@@ -174,6 +174,6 @@ OwnerRegister.propTypes = {
     register: PropTypes.func.isRequired,
   };
   const mapStateProps = (state) => ({
-    isAuthenticated: state.auth.isAuthenticated,
+    isAuthenticatedOwner: state.authOwner.isAuthenticatedOwner,
   });
   export default connect(mapStateProps,{ setAlert, register })(OwnerRegister);

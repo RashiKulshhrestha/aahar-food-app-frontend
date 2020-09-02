@@ -1,9 +1,13 @@
 import { combineReducers } from "redux";
 import alert from "./alert";
-import auth from "./auth";
+import authUser from "./authUser";
+import authOwner from "./authOwner";
+import owner from "./owner";
 
 
 export default combineReducers({
   alert,
-  auth,
+  authUser,
+  authOwner,
+  owner
 });

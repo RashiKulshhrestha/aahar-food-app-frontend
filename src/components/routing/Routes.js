@@ -1,6 +1,7 @@
 import React from "react";
 import { Route, Switch } from "react-router-dom";
-import PrivateRoute from "./PrivateRoute";
+import PrivateRouteOwner from "./PrivateRouteOwner";
+import PrivateRouteUser from "./PrivateRouteUser";
 import UserRegister from "../auth/UserRegister";
 import User from "../user/User";
 import OwnerRegister from "../auth/OwnerRegister";
@@ -13,9 +14,9 @@ export const Routes = () => {
         <section>
             <Switch>
                 <Route exact path="/user-register" component={UserRegister}></Route>
-                <PrivateRoute exact path="/user" component={User}></PrivateRoute>
+                <PrivateRouteUser exact path="/user" component={User}></PrivateRouteUser>
                 <Route exact path="/partner-with-us" component={OwnerRegister}></Route>
-                <PrivateRoute exact path="/owner" component={Owner}></PrivateRoute>
+                <PrivateRouteOwner exact path="/owner" component={Owner}></PrivateRouteOwner>
                 <Route exact path="/user-login" component={UserLogin}></Route>
                 <Route exact path="/owner-login" component={OwnerLogin}></Route>
             </Switch>

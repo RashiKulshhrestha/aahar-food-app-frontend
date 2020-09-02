@@ -5,7 +5,7 @@ import Home from "../components/auth/Home";
 
 import { Provider } from "react-redux";
 import store from "../store";
-import { loadUser } from "../actions/auth";
+import { loadUser } from "../actions/authUser";
 import setAuthUserToken from "../util/setAuthUserToken";
 import { Routes } from "../components/routing/Routes";
 

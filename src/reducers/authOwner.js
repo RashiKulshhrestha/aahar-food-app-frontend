@@ -10,7 +10,7 @@ import {
   
   const initialState = {
     token: localStorage.getItem("token"),
-    isAuthenticated: null,
+    isAuthenticatedOwner: null,
     loading: true,
     owner: null,
   };
@@ -21,7 +21,7 @@ import {
       case OWNER_LOADED:
         return {
           ...state,
-          isAuthenticated: true,
+          isAuthenticatedOwner: true,
           loading: false,
           owner: payload,
         };
@@ -31,7 +31,7 @@ import {
         return {
           ...state,
           ...payload,
-          isAuthenticated: true,
+          isAuthenticatedOwner: true,
           loading: false,
         };
       case REGISTER_OWNER_FAIL:
@@ -42,7 +42,7 @@ import {
         return {
           ...state,
           token: null,
-          isAuthenticated: false,
+          isAuthenticatedOwner: false,
           loading: false,
         };
       default:

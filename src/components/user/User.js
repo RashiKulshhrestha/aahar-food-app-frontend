@@ -1,9 +1,10 @@
 import React from "react";
+import Owners from "../owner/OwnerList";
 
 const User = () => {
     return (  
       <div>
-        <h1>user</h1>
+        <Owners/>
        </div>
     );
   };

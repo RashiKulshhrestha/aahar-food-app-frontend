@@ -3,10 +3,10 @@ import { Link, Redirect } from "react-router-dom";
 import { connect } from "react-redux";
 import { setAlert } from "../../actions/alert";
 import PropTypes from "prop-types";
-import { register } from "../../actions/auth";
+import { register } from "../../actions/authUser";
 import "./UserRegister.css";
 
-const UserRegister = ({ setAlert,register, isAuthenticated }) =>  {
+const UserRegister = ({ setAlert,register, isAuthenticatedUser }) =>  {
     const [formData, setFormdata] = useState({
         name: "",
         email:"",
@@ -32,7 +32,7 @@ const UserRegister = ({ setAlert,register, isAuthenticated }) =>  {
     
     };
     const { name, email, mobile, password, confPassword } = formData;
-    if (isAuthenticated) {
+    if (isAuthenticatedUser) {
         return <Redirect to="/user" />;
     }
     return(
@@ -106,6 +106,6 @@ UserRegister.propTypes = {
     register: PropTypes.func.isRequired,
   };
   const mapStateProps = (state) => ({
-    isAuthenticated: state.auth.isAuthenticated,
+    isAuthenticatedUser: state.authUser.isAuthenticatedUser,
   });
   export default connect(mapStateProps,{ setAlert, register })(UserRegister);
