@@ -37,14 +37,14 @@ const UserRegister = ({ setAlert,register, isAuthenticatedUser }) =>  {
     }
     return(
         <div className= "signup-container">
-            <header>
+            <header className="header">
                 <div className="signup-header">Signup</div>
                 <Link to="/" >
                     <button className="close-window"></button>
                 </Link>
             </header>
             <main>
-                <div className="login-banner">Already have an account?<Link to ="/login">Login</Link></div>
+                <div className="login-banner">Already have an account?<Link to ="/user-login">Login</Link></div>
                 <form onSubmit={(e) => onSubmit(e)}>
                     <input
                         className="input-field"

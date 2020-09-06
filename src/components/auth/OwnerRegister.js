@@ -53,7 +53,7 @@ const OwnerRegister = ({ setAlert,register, isAuthenticatedOwner }) =>  {
         postal_code
     } = formData;
     if (isAuthenticatedOwner) {
-        return <Redirect to="/owner" />;
+        return <Redirect to={`/owner/${email}`} />;
     }
     return(
         <div className="owner-signup-container">
@@ -159,7 +159,7 @@ const OwnerRegister = ({ setAlert,register, isAuthenticatedOwner }) =>  {
                     </input>
 
                     <input
-                    className="signup-btn"
+                    id="owner-signup-btn"
                     type="submit"
                     value="Signup"/>    
 

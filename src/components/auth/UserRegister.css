@@ -6,7 +6,7 @@
     border-radius: 20px;
     box-shadow: 10px 10px 20px rgb(148, 17, 17);
 }
-header{
+.header{
     height: 70px;
     display: flex;
     justify-content: space-between;
@@ -15,7 +15,7 @@ header{
     font-size: 48px;
     font-weight: 700;
     margin-left: 100px;
-}
+ }
 .close-window{
     height: 40px;
     width: 40px;

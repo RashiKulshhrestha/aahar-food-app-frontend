@@ -1,10 +1,10 @@
-import React, { Fragment, useEffect } from "react";
+import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import { getOwners } from "../../actions/owner";
 import PropTypes from "prop-types";
 import Spinner from "../layout/Spinner";
-
+import './owner.css';
 const Owners = ({ getOwners, owner: { owners, loading } }) => {
   useEffect(() => {
     getOwners();
@@ -12,20 +12,19 @@ const Owners = ({ getOwners, owner: { owners, loading } }) => {
   return loading ? (
     <Spinner />
   ) : (
-    <Fragment>
-      <h1 className="large text-primary">owners</h1>
-      <p className="lead">
-        list of owners
-      </p>
-      <div className="posts">
+    <div className="ownerlist-container">
+      <div>
         {owners.map((owner) => (
-          <div>
-            <Link to={`/order/${owner._id}`}><h4>{owner.service_name}</h4></Link>
-            <div>{owner.description}</div>
+          <div key={owner._id} className="ownercard">
+            <Link style={{textDecoration : "none"}} to={`/order/${owner.email}`}>
+            <div className="medium-text-heading">{owner.service_name}</div>
+            <div style={{ color: "black" }}><i>{owner.description}</i></div>
+            </Link>
           </div>
         ))}
       </div>
-     </Fragment>
+      <img src="http://www.dsource.in/tool/trinetra/img/tool_images/2_1470640064.png" alt="food-lover" height="30%" width="30%" />
+     </div>
   )
 }
 

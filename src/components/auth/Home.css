@@ -48,6 +48,7 @@ body{
 .logo-heading{
     display: flex;
     justify-content: space-evenly;
+    align-items: center;
 }
 .auth-btn{
     height: 40px;

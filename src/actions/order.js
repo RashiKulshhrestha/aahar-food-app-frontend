@@ -1,12 +1,12 @@
 import axios from "axios";
-import { GET_ORDERS, ORDER_ERROR} from "./types";
+import {GET_ORDERS, ORDER_ERROR} from "./types";
 
-// get owners
+// get orders
 
-export const getOrders = () => async(dispatch) =>{
+export const getOrders = (email) => async(dispatch) =>{
     try {
-        const res = await axios.get("http://localhost:5000/api/orders");
-    
+        const res = await axios.get(`http://localhost:5000/api/orders/${email}`);
+        console.log(res.data);
         dispatch({
           type: GET_ORDERS,
           payload: res.data,
@@ -14,7 +14,7 @@ export const getOrders = () => async(dispatch) =>{
       } catch (err) {
         dispatch({
           type: ORDER_ERROR,
-          payload: { msg:err.data.error.message, status: err.response.status },
+          payload: { msg: err.response.statusText, status: err.response.status },
         });
       }
 }

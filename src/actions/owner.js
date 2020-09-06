@@ -14,7 +14,7 @@ export const getOwners = () => async(dispatch) =>{
       } catch (err) {
         dispatch({
           type: OWNER_ERROR,
-          payload: { msg:err.data.error.message, status: err.response.status },
+          payload: { msg: err.response.statusText, status: err.response.status },
         });
       }
 }

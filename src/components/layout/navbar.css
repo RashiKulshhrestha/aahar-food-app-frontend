@@ -1,0 +1,29 @@
+.navbar-bg-user{
+    background-image: linear-gradient(to left,orange, rgb(148,17,17) , orange);
+    height: 90px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.7rem 2rem;
+}
+.navbar-bg-user ul{
+    
+    color:orange;
+    display: flex;
+    list-style: none;
+}
+.navbar-bg-user li{
+    background-color: rgb(148,17,17);
+    border-radius: 5px;
+    height: 30px;
+    width: 130px;
+    margin: 10px;
+    text-align: center;
+    padding-top:3px;
+}
+.navbar-bg-user a{
+    color:orange;
+    padding: 0.45rem;
+    margin: 0 0.25rem;
+    text-decoration: none;
+}

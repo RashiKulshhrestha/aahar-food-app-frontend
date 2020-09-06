@@ -16,8 +16,6 @@ const HomePage = () => {
                     <div className="tagline">Serves Home Food...</div>
                 </div>
             </div>
-            <i className="fas fa-users"></i>
-        <Link to="/profiles">Developers</Link>
             <div className="auth">
                 <Link to = "/user-register" className="auth-btn">Signup</Link>
                 <Link to = "/user-login" className="auth-btn">Login</Link>

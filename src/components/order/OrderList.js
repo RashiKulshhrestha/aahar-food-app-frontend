@@ -1,31 +1,35 @@
-import React, { Fragment, useEffect } from "react";
-import { Link } from "react-router-dom";
+import React, { useEffect } from "react";
 import { connect } from "react-redux";
 import { getOrders } from "../../actions/order";
 import PropTypes from "prop-types";
+import { useParams } from "react-router-dom";
 import Spinner from "../layout/Spinner";
+import "./order.css";
 
 const Orders = ({ getOrders, order: { orders, loading } }) => {
+  let { email } = useParams();
   useEffect(() => {
-    getOrders();
-  }, [getOrders]);
+    getOrders(email);
+  }, [getOrders, email]);
   return loading ? (
     <Spinner />
   ) : (
-    <Fragment>
-      <h1 className="large text-primary">orders</h1>
-      <p className="lead">
-        list of orders
-      </p>
-      <div className="posts">
-        {orders.map((order) => (
-          <div>
-            <Link to={`/order/${order._id}`}><h4>{order.service_name}</h4></Link>
-            <div>{order.description}</div>
-          </div>
-        ))}
+    <div className="order-list-container">
+      <div className="order-list-header">
+        <div>Order ID</div>
+        <div>No. of Meals</div>
+        <div>No. of Days</div>
+        <div>Status</div>
       </div>
-     </Fragment>
+      {orders.map((order) => (
+        <div className="order-list-content">
+          <div>{order._id}</div>
+          <div>{order.no_of_meals}</div>
+          <div>{order.no_of_days}</div>
+          <div>{order.status}</div>
+        </div>
+      ))}
+      </div>
   )
 }
 

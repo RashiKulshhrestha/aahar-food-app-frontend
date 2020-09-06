@@ -5,7 +5,7 @@ import PropTypes from "prop-types";
 import { login } from "../../actions/authOwner";
 import "./Login.css";
 
-const OwnerLogin = ({ login, isAuthenticatedOwner }) => {
+const OwnerLogin = ({ login, isAuthenticatedOwner, owner : { owners } }) => {
   const [formData, setFormdata] = useState({
     email: "",
     password: "",
@@ -19,11 +19,12 @@ const OwnerLogin = ({ login, isAuthenticatedOwner }) => {
   const onSubmit = async (e) => {
     e.preventDefault();
     login(email, password);
-  };
+    };
   const { email, password } = formData;
   //Redirect if logged in
     if (isAuthenticatedOwner) {
-      return <Redirect to="/owner" />;
+      console.log({owner:owners.id});
+      return <Redirect to={`/owner/${owners.id}`} />;
     }
   return (
     <Fragment>
@@ -35,7 +36,7 @@ const OwnerLogin = ({ login, isAuthenticatedOwner }) => {
                     </Link>
                 </header>
                 <main>
-                    <div className="signup-banner">Don't have an account?<Link to ="/signup">Signup</Link></div>
+                    <div className="signup-banner">Don't have an account?<Link to ="/partner-with-us">Register</Link></div>
                       <form onSubmit={(e) => onSubmit(e)}>
                           <input
                             className="input-field"
@@ -66,9 +67,11 @@ const OwnerLogin = ({ login, isAuthenticatedOwner }) => {
 OwnerLogin.prototype = {
   login: PropTypes.func.isRequired,
   isAuthenticatedOwner: PropTypes.bool,
+  owner: PropTypes.object.isRequired
 };
 
 const mapStateProps = (state) => ({
   isAuthenticatedOwner: state.authOwner.isAuthenticatedOwner,
+  owner: state.owner
 });
 export default connect(mapStateProps, { login })(OwnerLogin);

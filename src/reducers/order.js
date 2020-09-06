@@ -1,7 +1,7 @@
-import { GET_OWNERS, OWNER_ERROR} from "../actions/types";
+import { GET_ORDERS, ORDER_ERROR} from "../actions/types";
 
 const initialState = {
-    owners: [],
+    orders: [],
     loading: true,
     error: {},
   };
@@ -10,13 +10,13 @@ const initialState = {
     const { type, payload } = action;
   
     switch (type) {
-      case GET_OWNERS:
+      case GET_ORDERS:
         return {
           ...state,
-          owners: payload,
+          orders: payload,
           loading: false,
         };
-      case OWNER_ERROR:
+      case ORDER_ERROR:
         return {
             ...state,
             error: payload,

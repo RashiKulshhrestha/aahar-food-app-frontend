@@ -35,7 +35,7 @@ const UserLogin = ({ login, isAuthenticatedUser }) => {
                     </Link>
                 </header>
                 <main>
-                    <div className="signup-banner">Don't have an account?<Link to ="/signup">Signup</Link></div>
+                    <div className="signup-banner">Don't have an account?<Link to ="/user-register">Register</Link></div>
                     <form onSubmit={(e) => onSubmit(e)}>
                         <input
                           className="input-field"
@@ -59,8 +59,6 @@ const UserLogin = ({ login, isAuthenticatedUser }) => {
                         <Link to="/owner-login">
                           <button className="userlogin-btn">Login as Provider</button>
                         </Link>
-                        
-                        
                     </form>
                 </main>
                 <footer>&copy; <code>AaHar Pvt.Ltd.</code>,Agra,Uttar Pradesh</footer>

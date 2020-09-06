@@ -1,0 +1,35 @@
+.order-list-container{
+    background-image: linear-gradient(to top, rgb(148, 17, 17) , orange);
+    height: 100%;
+    width: 100%;
+    overflow-x: hidden;
+    border-radius: 10px;
+    box-shadow: 5px 5px black;
+}
+.order-list-header{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    color:rgb(245, 235, 235);
+    font-size: 28px;
+    font-weight: 800;
+    text-align: center;
+    background-image: linear-gradient(to left,rgb(146, 31, 31) , rgb(248, 178, 47),rgb(146, 31, 31) );
+    border-radius: 20px;
+    border: 2px dotted rgb(148, 17, 17);
+    margin: 10px;
+    padding: 10px;
+}
+.order-list-content{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    font-size: 18px;
+    font-weight: 600;
+    padding: 10px;
+    font-style: italic;
+    color: rgb(148, 17, 17);
+    text-align: center;
+    background-color: rgb(250, 179, 49);
+    border-radius:20px;
+    border:2px solid rgb(148, 17, 17);
+    margin: 10px;
+}
