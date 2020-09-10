@@ -39,6 +39,7 @@ const UserLogin = ({ login, isAuthenticatedUser, user_id }) => {
                     <div className="signup-banner">Don't have an account?<Link to ="/user-register">Register</Link></div>
                     <form onSubmit={(e) => onSubmit(e)}>
                         <input
+                          required
                           className="input-field"
                           placeholder="Email"
                           type="text"
@@ -48,6 +49,7 @@ const UserLogin = ({ login, isAuthenticatedUser, user_id }) => {
                         </input>
 
                         <input
+                          required
                           className="input-field"
                           placeholder="Password"
                           type="password"

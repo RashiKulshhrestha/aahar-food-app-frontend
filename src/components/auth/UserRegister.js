@@ -52,6 +52,7 @@ const UserRegister = ({ setAlert,register, isAuthenticatedUser, user_id }) =>  {
                         type="text"
                         name="name"
                         value={name}
+                        required
                         onChange={(e) => onChange(e)}>
                     </input>
                     <input
@@ -60,6 +61,7 @@ const UserRegister = ({ setAlert,register, isAuthenticatedUser, user_id }) =>  {
                         type="text"
                         name="email"
                         value={email}
+                        required
                         onChange={(e) => onChange(e)}>
                     </input>
                     <input
@@ -68,6 +70,7 @@ const UserRegister = ({ setAlert,register, isAuthenticatedUser, user_id }) =>  {
                         type="text"
                         name="mobile"
                         value={mobile}
+                        required
                         onChange={(e) => onChange(e)}>
                     </input>
                     <input 
@@ -76,6 +79,7 @@ const UserRegister = ({ setAlert,register, isAuthenticatedUser, user_id }) =>  {
                         type="password"
                         name="password"
                         value={password}
+                        required
                         onChange={(e) => onChange(e)}>
                     </input>
                     <input
@@ -84,6 +88,7 @@ const UserRegister = ({ setAlert,register, isAuthenticatedUser, user_id }) =>  {
                         type="password"
                         name="confPassword"
                         value={confPassword}
+                        required
                         onChange={(e) => onChange(e)}>
                     </input>
                     <input

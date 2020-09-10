@@ -42,6 +42,7 @@ const OwnerLogin = ({ login, isAuthenticatedOwner, owner_id }) => {
                             placeholder="Email"
                             type="text"
                             name="email"
+                            required
                             value={email}
                             onChange={(e) => onChange(e)}>
                           </input>
@@ -51,6 +52,7 @@ const OwnerLogin = ({ login, isAuthenticatedOwner, owner_id }) => {
                             placeholder="Password"
                             type="password"
                             name="password"
+                            required
                             value={password}
                             onChange={(e) => onChange(e)}>
                           </input>

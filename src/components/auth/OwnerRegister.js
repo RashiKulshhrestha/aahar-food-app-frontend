@@ -83,6 +83,7 @@ const OwnerRegister = ({ setAlert,register, isAuthenticatedOwner, owner_id }) =>
                         type="text"
                         name="service_name"
                         value={service_name}
+                        required
                         onChange={(e) => onChange(e)}>
                     </input>
 
@@ -92,6 +93,7 @@ const OwnerRegister = ({ setAlert,register, isAuthenticatedOwner, owner_id }) =>
                         type="text"
                         name="owner_name"
                         value={owner_name}
+                        required
                         onChange={(e) => onChange(e)}>
                     </input>
 
@@ -101,6 +103,7 @@ const OwnerRegister = ({ setAlert,register, isAuthenticatedOwner, owner_id }) =>
                         type="text"
                         name="mobile"
                         value={mobile}
+                        required
                         onChange={(e) => onChange(e)}>
                     </input>
 
@@ -110,6 +113,7 @@ const OwnerRegister = ({ setAlert,register, isAuthenticatedOwner, owner_id }) =>
                         type="text"
                         name="email"
                         value={email}
+                        required
                         onChange={(e) => onChange(e)}>
                     </input>
 
@@ -119,6 +123,7 @@ const OwnerRegister = ({ setAlert,register, isAuthenticatedOwner, owner_id }) =>
                         type="password"
                         name="password"
                         value={password}
+                        required
                         onChange={(e) => onChange(e)}>
                     </input>
 
@@ -128,6 +133,7 @@ const OwnerRegister = ({ setAlert,register, isAuthenticatedOwner, owner_id }) =>
                         type="password"
                         name="confPassword"
                         value={confPassword}
+                        required
                         onChange={(e) => onChange(e)}>
                     </input>
 
@@ -137,6 +143,7 @@ const OwnerRegister = ({ setAlert,register, isAuthenticatedOwner, owner_id }) =>
                         type="text"
                         name="address"
                         value={address}
+                        required
                         onChange={(e) => onChange(e)}>
                     </input>
 
@@ -146,6 +153,7 @@ const OwnerRegister = ({ setAlert,register, isAuthenticatedOwner, owner_id }) =>
                         type="text"
                         name="city"
                         value={city}
+                        required
                         onChange={(e) => onChange(e)}>
                     </input>
 
@@ -155,6 +163,7 @@ const OwnerRegister = ({ setAlert,register, isAuthenticatedOwner, owner_id }) =>
                         type="text"
                         name="postal_code"
                         value={postal_code}
+                        required
                         onChange={(e) => onChange(e)}>
                     </input>
 
