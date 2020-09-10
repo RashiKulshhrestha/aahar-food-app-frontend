@@ -10,9 +10,10 @@ import {
   
   const initialState = {
     token: localStorage.getItem("token"),
-    isAuthenticatedUser: null,
+    isAuthenticatedUser: false,
     loading: true,
     user: null,
+    user_id: ""
   };
   
   const isAuthenticatedUser=()=>{
@@ -33,12 +34,14 @@ import {
         };
       case REGISTER_SUCCESS:
       case LOGIN_SUCCESS:
-        localStorage.setItem("token", payload.token);
+        localStorage.setItem("token", payload.res.token); 
         localStorage.setItem("user_type", "user");
+        console.log("User login");
         return {
           ...state,
-          ...payload,
-          isAuthenticatedUser: true,
+          ...payload.res,
+          user_id : payload.user_id,
+          isAuthenticatedUser: isAuthenticatedUser(),
           loading: false,
         };
       case REGISTER_FAIL:

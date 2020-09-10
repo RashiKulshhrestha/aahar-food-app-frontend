@@ -40,10 +40,13 @@ export const register = ({ name, email, mobile, password }) => async (dispatch) 
   const body = JSON.stringify({ name, email, mobile, password });
   try {
     const res = await axios.post("http://localhost:5000/api/users", body, config);
+    const user_id = await axios.get(`http://localhost:5000/api/users/${email}`);
+    console.log(email);
     console.log(res.data);
     dispatch({
       type: REGISTER_SUCCESS,
-      payload: res.data,
+      payload:{res: res.data,
+        user_id:user_id.data._id }
     });
     dispatch(loadUser());
   } catch (err) {
@@ -67,12 +70,15 @@ export const login = (email, password) => async (dispatch) => {
   const body = JSON.stringify({ email, password });
   try {
     const res = await axios.post("http://localhost:5000/api/authUser", body, config);
-
+    const user_id = await axios.get(`http://localhost:5000/api/users/${email}`);
+    console.log(email);
+    console.log(res.data);
     dispatch({
       type: LOGIN_SUCCESS,
-      payload: res.data,
+      payload:{res: res.data,
+        user_id:user_id.data._id }
     });
-    dispatch(loadUser());
+    //dispatch(loadUser());
   } catch (err) {
     const errors = err.response.data.errors;
 
@@ -82,6 +88,7 @@ export const login = (email, password) => async (dispatch) => {
     dispatch({
       type: LOGIN_FAIL,
     });
+    
   }
 };
 

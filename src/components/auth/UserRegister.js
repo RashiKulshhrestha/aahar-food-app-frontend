@@ -6,7 +6,7 @@ import PropTypes from "prop-types";
 import { register } from "../../actions/authUser";
 import "./UserRegister.css";
 
-const UserRegister = ({ setAlert,register, isAuthenticatedUser }) =>  {
+const UserRegister = ({ setAlert,register, isAuthenticatedUser, user_id }) =>  {
     const [formData, setFormdata] = useState({
         name: "",
         email:"",
@@ -33,7 +33,7 @@ const UserRegister = ({ setAlert,register, isAuthenticatedUser }) =>  {
     };
     const { name, email, mobile, password, confPassword } = formData;
     if (isAuthenticatedUser) {
-        return <Redirect to="/user" />;
+        return <Redirect to={`/user/${user_id}`}/>;
     }
     return(
         <div className= "signup-container">
@@ -107,5 +107,6 @@ UserRegister.propTypes = {
   };
   const mapStateProps = (state) => ({
     isAuthenticatedUser: state.authUser.isAuthenticatedUser,
+    user_id : state.authUser.user_id
   });
   export default connect(mapStateProps,{ setAlert, register })(UserRegister);

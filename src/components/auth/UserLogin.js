@@ -5,7 +5,7 @@ import PropTypes from "prop-types";
 import { login } from "../../actions/authUser";
 import "./Login.css";
 
-const UserLogin = ({ login, isAuthenticatedUser }) => {
+const UserLogin = ({ login, isAuthenticatedUser, user_id }) => {
   const [formData, setFormdata] = useState({
     email: "",
     password: "",
@@ -22,8 +22,9 @@ const UserLogin = ({ login, isAuthenticatedUser }) => {
   };
   const { email, password } = formData;
   //Redirect if logged in
-  if (isAuthenticatedUser) {
-    return <Redirect to="/user" />;
+  if (isAuthenticatedUser) { 
+    console.log("User Auth");
+    return <Redirect to={`/user/${user_id}`} />;
   }
   return (
     <Fragment>
@@ -73,5 +74,6 @@ UserLogin.prototype = {
 
 const mapStateProps = (state) => ({
   isAuthenticatedUser: state.authUser.isAuthenticatedUser,
+  user_id : state.authUser.user_id
 });
 export default connect(mapStateProps, { login })(UserLogin);

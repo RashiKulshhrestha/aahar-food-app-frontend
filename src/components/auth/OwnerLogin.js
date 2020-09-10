@@ -5,7 +5,7 @@ import PropTypes from "prop-types";
 import { login } from "../../actions/authOwner";
 import "./Login.css";
 
-const OwnerLogin = ({ login, isAuthenticatedOwner, owner : { owners } }) => {
+const OwnerLogin = ({ login, isAuthenticatedOwner, owner_id }) => {
   const [formData, setFormdata] = useState({
     email: "",
     password: "",
@@ -23,8 +23,7 @@ const OwnerLogin = ({ login, isAuthenticatedOwner, owner : { owners } }) => {
   const { email, password } = formData;
   //Redirect if logged in
     if (isAuthenticatedOwner) {
-      console.log({owner:owners.id});
-      return <Redirect to={`/owner/${owners.id}`} />;
+      return <Redirect to={`/owner/${owner_id}`} />;
     }
   return (
     <Fragment>
@@ -72,6 +71,7 @@ OwnerLogin.prototype = {
 
 const mapStateProps = (state) => ({
   isAuthenticatedOwner: state.authOwner.isAuthenticatedOwner,
-  owner: state.owner
+  owner: state.owner,
+  owner_id : state.authOwner.owner_id
 });
 export default connect(mapStateProps, { login })(OwnerLogin);

@@ -1,10 +1,11 @@
 import React, { Fragment } from "react";
 import { Link } from "react-router-dom";
+import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import { logout } from "../../actions/authOwner";
 import "./navbar.css";
 // eslint-disable-next-line
-const NavbarOwner = ({ logout }) => {
+const NavbarOwner = ({ logout, owner_id }) => {
   return (
       <nav className="navbar-bg-user">
         <Fragment>
@@ -18,13 +19,13 @@ const NavbarOwner = ({ logout }) => {
               </div>
               <ul>
                 <li className="li-nav">
-                  <Link to="/add-menu">
-                  <i class="fas fa-plus-circle"></i>
+                  <Link to={`/add-menu/${owner_id}`}>
+                  <i className="fas fa-plus-circle"></i>
                     <span> Add Menu</span>
                   </Link>
                 </li>
                 <li className="li-nav">
-                <a onClick={logout} href="#">
+                <a onClick={logout} href="owner-login">
                   <i className="fas fa-sign-out-alt"></i>{" "}
                   <span className="hide-sm">Logout</span>
                 </a>
@@ -39,4 +40,7 @@ NavbarOwner.propTypes = {
   logout: PropTypes.func.isRequired,
 };
 
-export default NavbarOwner;
+const mapStateProps = (state) => ({
+  owner_id : state.authOwner.owner_id
+});
+export default connect(mapStateProps,{ logout })(NavbarOwner);

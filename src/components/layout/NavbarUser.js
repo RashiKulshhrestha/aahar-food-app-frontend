@@ -1,10 +1,13 @@
 import React, { Fragment } from "react";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
+import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import { logout } from "../../actions/authUser";
 import "./navbar.css";
 // eslint-disable-next-line
-const NavbarUser = ({ logout }) => {
+const NavbarUser = ({ logout}) => {
+  const user_id = useParams();
+  console.log(user_id);
   return (
       <nav className="navbar-bg-user">
         <Fragment>
@@ -17,14 +20,9 @@ const NavbarUser = ({ logout }) => {
                   </div>
               </div>
               <ul>
+                
                 <li className="li-nav">
-                  <Link to="/my-order">
-                    <i class="fas fa-utensils"></i>
-                    <span> Your Orders</span>
-                  </Link>
-                </li>
-                <li className="li-nav">
-                <a onClick={logout} href="#">
+                <a onClick={logout} href="user-login">
                   <i className="fas fa-sign-out-alt"></i>{" "}
                   <span className="hide-sm">Logout</span>
                 </a>
@@ -39,4 +37,8 @@ NavbarUser.propTypes = {
   logout: PropTypes.func.isRequired,
 };
 
-export default NavbarUser;
+// const mapStateToProps= (state)=>({
+//     user_id: state.authUser.user_id
+// });
+
+export default connect(null,{ logout })(NavbarUser);

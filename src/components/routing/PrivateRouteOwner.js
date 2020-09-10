@@ -5,7 +5,7 @@ import { connect } from "react-redux";
 
 const PrivateRouteOwner = ({
   component: Component,
-  authOwner: { isAuthenticatedOwner, loading },
+  authOwner: { isAuthenticatedOwner, loading},
   ...rest
 }) => (
   <Route

@@ -7,10 +7,11 @@ import Spinner from "../layout/Spinner";
 import "./order.css";
 
 const Orders = ({ getOrders, order: { orders, loading } }) => {
-  let { email } = useParams();
+  let { owner_id } = useParams();
+  console.log(owner_id);
   useEffect(() => {
-    getOrders(email);
-  }, [getOrders, email]);
+    getOrders(owner_id);
+  }, [getOrders, owner_id]);
   return loading ? (
     <Spinner />
   ) : (

@@ -1,9 +1,13 @@
-import { GET_OWNERS, OWNER_ERROR} from "../actions/types";
+import { 
+  GET_OWNERS,
+  OWNER_ERROR,
+  ADD_MENU
+} from "../actions/types";
 
 const initialState = {
     owners: [],
     loading: true,
-    error: {},
+    error: {}
   };
 
   export default function (state = initialState, action) {
@@ -21,6 +25,12 @@ const initialState = {
             ...state,
             error: payload,
             loading: false,
+        };
+        case ADD_MENU:
+        return {
+          ...state,
+          owner: { ...state.owner, description: payload },
+          loading: false,
         };
         default:
       return state;

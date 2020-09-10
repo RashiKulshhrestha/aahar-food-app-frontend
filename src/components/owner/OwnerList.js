@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { connect } from "react-redux";
 import { getOwners } from "../../actions/owner";
 import PropTypes from "prop-types";
@@ -9,6 +9,7 @@ const Owners = ({ getOwners, owner: { owners, loading } }) => {
   useEffect(() => {
     getOwners();
   }, [getOwners]);
+  let { user_id }= useParams(); console.log(user_id);
   return loading ? (
     <Spinner />
   ) : (
@@ -16,7 +17,7 @@ const Owners = ({ getOwners, owner: { owners, loading } }) => {
       <div>
         {owners.map((owner) => (
           <div key={owner._id} className="ownercard">
-            <Link style={{textDecoration : "none"}} to={`/order/${owner.email}`}>
+            <Link style={{textDecoration : "none"}} to={`/order/${user_id}/${owner._id}`}>
             <div className="medium-text-heading">{owner.service_name}</div>
             <div style={{ color: "black" }}><i>{owner.description}</i></div>
             </Link>
@@ -35,5 +36,5 @@ Owners.propTypes = {
 
 const mapStateToProps = (state) => ({
     owner: state.owner,
-});
+ });
 export default connect(mapStateToProps, { getOwners })(Owners);

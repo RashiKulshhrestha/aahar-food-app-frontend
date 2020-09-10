@@ -33,3 +33,39 @@
     border:2px solid rgb(148, 17, 17);
     margin: 10px;
 }
+.placeorder-container{
+    background-color: orange;
+    border: 5px solid rgb(148, 17, 17);
+    border-radius: 10%;
+    box-shadow: 10px 10px 20px rgb(148, 17, 17);
+    height: 400px;
+    width: 400px;
+    display: grid;
+    justify-content: center;
+    align-content: center;
+    color: rgb(148, 17, 17);
+}
+
+.order-heading{
+    font-size: 36px;
+    font-weight: 600;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+.field-content{
+    display: block;
+}
+form input{
+    height:25px;
+    width: 80px;
+    border-radius: 5px;
+    background-color: rgb(250, 208, 129);
+    margin:10px;
+}
+form label {
+    font-weight: 500;
+    padding:10px;
+}
+.order-details{
+    display: grid;
+    grid-template-rows: 1fr 1fr 1fr;
+}

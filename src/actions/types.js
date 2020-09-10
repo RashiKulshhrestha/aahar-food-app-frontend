@@ -20,3 +20,6 @@ export const GET_ORDERS = "GET_ORDERS";
 export const ORDER_ERROR = "ORDER_ERROR";
 export const GET_OWNER = "GET_OWNER";
 export const NO_OWNER = "NO_OWNER";
+export const ADD_MENU = "ADD_MENU";
+export const MENU_ERROR = "MENU_ERROR";
+export const PLACE_ORDER = "PLACE_ORDER";

@@ -9,8 +9,6 @@ import {
   LOGIN_OWNER_SUCCESS,
   LOGIN_OWNER_FAIL,
   LOGOUT_OWNER,
-  GET_OWNER,
-  NO_OWNER
 } from "./types";
 
 export const loadOwner = () => async (dispatch) => {
@@ -19,6 +17,7 @@ export const loadOwner = () => async (dispatch) => {
   }
   
   try {
+    console.log("before loadOwner");
     const res = await axios.get("http://localhost:5000/api/authOwner");
     console.log("loadOwner");
     dispatch({
@@ -57,9 +56,11 @@ export const register = ({ service_name,
     postal_code });
   try {
     const res = await axios.post("http://localhost:5000/api/owners", body, config);
+    const ownerID = await axios.get(`http://localhost:5000/api/owners/${email}`);
     dispatch({
       type: REGISTER_OWNER_SUCCESS,
-      payload: res.data,
+      payload:{res: res.data,
+        owner_id:ownerID.data._id }
     });
     dispatch(loadOwner());
   } catch (err) {
@@ -83,13 +84,16 @@ export const login = (email, password) => async (dispatch) => {
   const body = JSON.stringify({ email, password });
   try {
     const res = await axios.post("http://localhost:5000/api/authOwner", body, config);
+    const ownerID = await axios.get(`http://localhost:5000/api/owners/${email}`);
     console.log(email);
-    dispatch(getOwner(email));
+    console.log(ownerID);
     dispatch({
       type: LOGIN_OWNER_SUCCESS,
-      payload: res.data,
+      payload:{res: res.data,
+      owner_id:ownerID.data._id }
+
     });
-    dispatch(loadOwner());
+    // dispatch(loadOwner());
     
   } catch (err) {
     const errors = err.response.data.errors;
@@ -103,29 +107,7 @@ export const login = (email, password) => async (dispatch) => {
   }
 };
 
-// get Owner details
-export const getOwner = (email) => async(dispatch) => {
-  try {
-    console.log(email);
-    const res = await axios.get(`http://localhost:5000/api/owners/${email}`);
-    console.log(res.data);
-    
-    dispatch({
-      type: GET_OWNER,
-      payload: res.data
-    });
-  }
-  catch (err) {
-      const errors = err.response.data.errors;
-      
-      if (errors) {
-        errors.forEach((error) => dispatch(setAlert(error.msg, "danger")));
-      }
-      dispatch({
-        type: NO_OWNER,
-      });
-    }
-};
+
 // logout
 
 export const logout = () => (dispatch) => {

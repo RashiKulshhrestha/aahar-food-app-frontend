@@ -6,7 +6,6 @@ import {
     LOGIN_OWNER_SUCCESS,
     LOGIN_OWNER_FAIL,
     LOGOUT_OWNER,
-    GET_OWNER,
     NO_OWNER
    } from "../actions/types";
   
@@ -15,6 +14,7 @@ import {
     isAuthenticatedOwner: null,
     loading: true,
     owner: null,
+    owner_id: ""
   };
   
   const isAuthenticatedOwner=()=>{
@@ -27,7 +27,7 @@ import {
     const { type, payload } = action;
     switch (type) {
       case OWNER_LOADED:
-      case GET_OWNER: 
+       
         return {
           ...state,
           isAuthenticatedOwner: isAuthenticatedOwner(),
@@ -36,11 +36,13 @@ import {
         };
       case REGISTER_OWNER_SUCCESS:
       case LOGIN_OWNER_SUCCESS:
-        localStorage.setItem("token", payload.token);
+        localStorage.setItem("token", payload.res.token);
         localStorage.setItem("user_type","owner");
+        console.log("owner login");
         return {
           ...state,
-          ...payload,
+          ...payload.res,
+          owner_id : payload.owner_id,
           isAuthenticatedOwner: isAuthenticatedOwner(),
           loading: false,
         };

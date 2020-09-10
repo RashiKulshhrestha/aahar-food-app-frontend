@@ -6,7 +6,7 @@ import PropTypes from "prop-types";
 import { register } from "../../actions/authOwner";
 import "./ownerRegister.css";
 
-const OwnerRegister = ({ setAlert,register, isAuthenticatedOwner }) =>  {
+const OwnerRegister = ({ setAlert,register, isAuthenticatedOwner, owner_id }) =>  {
     const [formData, setFormdata] = useState({
         service_name: "",
         owner_name: "",
@@ -53,7 +53,7 @@ const OwnerRegister = ({ setAlert,register, isAuthenticatedOwner }) =>  {
         postal_code
     } = formData;
     if (isAuthenticatedOwner) {
-        return <Redirect to={`/owner/${email}`} />;
+        return <Redirect to={`/owner/${owner_id}`} />;
     }
     return(
         <div className="owner-signup-container">
@@ -175,5 +175,6 @@ OwnerRegister.propTypes = {
   };
   const mapStateProps = (state) => ({
     isAuthenticatedOwner: state.authOwner.isAuthenticatedOwner,
+    owner_id : state.authOwner.owner_id
   });
   export default connect(mapStateProps,{ setAlert, register })(OwnerRegister);
