@@ -24,7 +24,11 @@ const Order = ({ placeOrder }) => {
   const onSubmit = async (e) => {
     e.preventDefault();
     placeOrder({ no_of_meals, no_of_days,start_date,end_date, total_amount,user_id, owner_id });
-  
+    setFormdata({
+      no_of_meals: "",
+      start_date: "",
+      end_date: "",
+  });
   };
 let {user_id} = useParams();
 let { owner_id } = useParams();
