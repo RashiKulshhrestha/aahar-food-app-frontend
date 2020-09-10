@@ -5,13 +5,13 @@ import { connect } from "react-redux";
 
 const PrivateRouteOwner = ({
   component: Component,
-  authOwner: { isAuthenticatedOwner, loading},
+  authOwner: { isAuthenticatedOwner, loadingOwner},
   ...rest
 }) => (
   <Route
     {...rest}
     render={(props) =>
-      !isAuthenticatedOwner && !loading ? (
+      !isAuthenticatedOwner && loadingOwner ? (
         <Redirect to="/owner-login" />
       ) : (
         <Component {...props} />

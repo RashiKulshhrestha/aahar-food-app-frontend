@@ -1,5 +1,5 @@
 import axios from "axios";
-
+import { setAlert } from "./alert";
 import {
   GET_ORDERS,
   ORDER_ERROR,
@@ -55,10 +55,17 @@ export const placeOrder = ({
         type: PLACE_ORDER,
         payload: res.data,
       });
+      dispatch(setAlert("ORDER PLACED", "success"));
     } catch (err) {
+      console.error(err.response.data.errors);
+      const errors = err.response.data.errors;
+      if (errors) {
+        
+        errors.forEach((error) => dispatch(setAlert(error.msg, "danger")));
+        
+      }
       dispatch({
         type: ORDER_ERROR,
-        payload: { msg: err.response.statusText, status: err.response.status },
       });
     }
 }

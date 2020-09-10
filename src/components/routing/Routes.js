@@ -11,10 +11,12 @@ import OwnerLogin from "../auth/OwnerLogin";
 import Order from "../order/Order";
 import AddMenu from "../owner/AddMenu";
 import { NotFound } from "../layout/NotFound";
+import Alert from "../layout/Alert";
 
 export const Routes = () => {
     return(
         <section>
+            <Alert />
             <Switch>
                 <Route exact path="/user-register" component={UserRegister}></Route>
                 <PrivateRouteUser exact path="/user/:user_id" component={User}></PrivateRouteUser>

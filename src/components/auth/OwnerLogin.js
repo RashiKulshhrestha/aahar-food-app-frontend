@@ -29,7 +29,7 @@ const OwnerLogin = ({ login, isAuthenticatedOwner, owner_id }) => {
     <Fragment>
       <div className= "login-container">
                 <header>
-                    <div className="login-header">Login</div>
+                    <div className="provider-login-header">Provider's Login</div>
                     <Link to="/" >
                         <button className="close-window"></button>
                     </Link>

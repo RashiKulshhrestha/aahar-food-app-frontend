@@ -4,20 +4,17 @@ import './Home.css';
 
 
 const HomePage = () => {
-    // if (isAuthenticated) {
-    //   return <Redirect to="/user" />;
-    // }
     return (
         <div className = "home-container">
             <div className="logo-heading">
-                <img src = "favicon.png" alt="Aahar" height="100px" width="100px"></img>
+                <img src = "favicon.png" alt="Aahar" height="200px" width="200px"></img>
                 <div className="heading">
                     <div className="aahar-header">AaHar</div>
                     <div className="tagline">Serves Home Food...</div>
                 </div>
             </div>
             <div className="auth">
-                <Link to = "/user-register" className="auth-btn">Signup</Link>
+                <Link to = "/user-register" className="auth-btn">Register</Link>
                 <Link to = "/user-login" className="auth-btn">Login</Link>
             </div>
         </div>

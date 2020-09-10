@@ -4,13 +4,14 @@ import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import { logout } from "../../actions/authOwner";
 import "./navbar.css";
+const logo = require("./aahar.png");
 // eslint-disable-next-line
 const NavbarOwner = ({ logout, owner_id }) => {
   return (
       <nav className="navbar-bg-user">
         <Fragment>
               <div className="logo-heading">
-                  <img src = "favicon.png" alt="Aahar" height="70px" width="70px"></img>
+                  <img src = {logo} alt="Aahar" height="70px" width="70px"></img>
                   <div className="heading">
                       <Link to="/">
                         <div className="aahar">AaHar</div>

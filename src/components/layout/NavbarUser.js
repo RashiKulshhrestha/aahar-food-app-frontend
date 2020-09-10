@@ -4,6 +4,7 @@ import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import { logout } from "../../actions/authUser";
 import "./navbar.css";
+const logo = require("./aahar.png");
 // eslint-disable-next-line
 const NavbarUser = ({ logout}) => {
   const user_id = useParams();
@@ -12,7 +13,7 @@ const NavbarUser = ({ logout}) => {
       <nav className="navbar-bg-user">
         <Fragment>
               <div className="logo-heading">
-                  <img src = "favicon.png" alt="Aahar" height="70px" width="70px"></img>
+                  <img src = {logo} alt="Aahar" height="70px" width="70px"></img>
                   <div className="heading">
                       <Link to="/">
                         <div className="aahar">AaHar</div>

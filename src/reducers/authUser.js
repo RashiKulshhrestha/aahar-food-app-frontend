@@ -11,7 +11,7 @@ import {
   const initialState = {
     token: localStorage.getItem("token"),
     isAuthenticatedUser: false,
-    loading: true,
+    loadingUser: true,
     user: null,
     user_id: ""
   };
@@ -29,7 +29,7 @@ import {
         return {
           ...state,
           isAuthenticatedUser: isAuthenticatedUser(),
-          loading: false,
+          loadingUser: false,
           user: payload,
         };
       case REGISTER_SUCCESS:
@@ -42,7 +42,7 @@ import {
           ...payload.res,
           user_id : payload.user_id,
           isAuthenticatedUser: isAuthenticatedUser(),
-          loading: false,
+          loadingUser: false,
         };
       case REGISTER_FAIL:
       case AUTH_ERROR:
@@ -55,7 +55,7 @@ import {
           ...state,
           token: null,
           isAuthenticatedUser: false,
-          loading: false,
+          loadingUser: false,
         };
       default:
         return state;
